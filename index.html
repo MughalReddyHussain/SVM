@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VSM SHOWS — discover movies and plan your next cinema experience.">
+<title>VSM SHOWS | Your Cinema Starts Here</title>
+<style>
+:root{--bg:#080b14;--panel:#111827;--muted:#9ca3af;--text:#f8fafc;--accent:#f5b942;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{position:sticky;top:0;z-index:10;background:rgba(8,11,20,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:22px;font-weight:900;letter-spacing:1.8px}.brand span{color:var(--accent)}
+nav{display:flex;gap:22px}nav a{color:#cbd5e1;text-decoration:none;font-size:14px}nav a:hover{color:var(--accent)}
+.hero{max-width:1180px;margin:auto;padding:76px 22px 52px;display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center}
+.eyebrow{color:var(--accent);font-size:12px;letter-spacing:3px;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.02;letter-spacing:-2.5px;margin:16px 0}.hero p{color:#aab4c4;line-height:1.75;max-width:540px}
+.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:13px 21px;font-weight:800;text-decoration:none;cursor:pointer}.primary{background:var(--accent);color:#17120a}.secondary{border:1px solid var(--line);color:#fff;background:#ffffff08}
+.feature{min-height:350px;border-radius:28px;padding:28px;display:flex;align-items:end;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,#e0a22b88,transparent 34%),linear-gradient(140deg,#202b45,#101522 55%,#3b1d20);border:1px solid #ffffff20}
+.feature:before{content:"VSM";position:absolute;right:-10px;top:15px;font-size:clamp(100px,18vw,190px);font-weight:1000;color:#ffffff0c;letter-spacing:-12px}
+.feature-copy{position:relative}.feature-copy small{color:var(--accent);letter-spacing:2px;font-weight:800}.feature-copy h2{font-size:38px;margin:9px 0}
+.section{max-width:1180px;margin:auto;padding:28px 22px 70px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:22px}.section h2{font-size:30px;margin:0}.section-head p{color:var(--muted);margin:8px 0 0}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}.tools input,.tools select{background:#111827;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:white;outline:none}.tools input{flex:1;min-width:220px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.movie{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.22s;display:flex;flex-direction:column}.movie:hover{transform:translateY(-5px);border-color:#f5b94288}
+.poster{height:250px;display:flex;align-items:end;padding:18px;position:relative;overflow:hidden;background:var(--poster,linear-gradient(135deg,#29354f,#7c3b35))}
+.poster:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#080b14 0%,transparent 72%),radial-gradient(circle at 75% 20%,#ffffff30,transparent 35%)}
+.poster-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:84px;font-weight:1000;color:#ffffff1c;letter-spacing:-7px;transform:rotate(-12deg)}
+.poster-label{position:relative;font-weight:950;font-size:23px;line-height:1.05;text-shadow:0 2px 10px #000}
+.movie-info{padding:15px;display:flex;flex-direction:column;flex:1}.movie-info h3{font-size:17px;margin:0 0 7px}.meta{font-size:12px;color:var(--muted);margin-bottom:14px}.movie-info button{margin-top:auto;width:100%;background:#f5b942;color:#17120a;border:0;border-radius:10px;padding:11px;font-weight:900;cursor:pointer}
+.empty{display:none;color:var(--muted);padding:28px;text-align:center;grid-column:1/-1}
+.note{color:#8490a3;font-size:12px;line-height:1.6;margin-top:20px}
+footer{border-top:1px solid var(--line);padding:28px 22px;color:#7f8a9d;text-align:center;font-size:13px}
+.modal{position:fixed;inset:0;background:#000b;display:none;place-items:center;padding:20px;z-index:20}.modal.show{display:grid}.dialog{width:min(430px,100%);background:#111827;border:1px solid var(--line);border-radius:20px;padding:24px}.dialog h3{margin-top:0}.dialog p{color:#aab4c4;line-height:1.6}.close{float:right;background:none;border:0;color:white;font-size:24px;cursor:pointer}.dialog a{color:var(--accent)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.hero{grid-template-columns:1fr}.feature{min-height:260px}}
+@media(max-width:620px){nav{gap:12px}nav a{font-size:12px}.nav{padding:14px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.poster{height:205px}.poster-label{font-size:19px}.section h2{font-size:25px}.hero{padding-top:52px}}
+@media(max-width:390px){.grid{grid-template-columns:1fr 1fr}.poster{height:170px}.movie-info{padding:11px}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand">VSM <span>SHOWS</span></div><nav><a href="#home">Home</a><a href="#movies">Movies</a><a href="#about">About</a></nav></div></header>
+<main>
+<section class="hero" id="home"><div><div class="eyebrow">Lights • Camera • Your Show</div><h1>Your next<br><span style="color:var(--accent)">movie moment</span><br>starts here.</h1><p>Discover the movies you love, explore what’s showing, and get ready for a great cinema experience with VSM SHOWS.</p><div class="actions"><a class="btn primary" href="#movies">Explore Movies</a><a class="btn secondary" href="#about">About VSM SHOWS</a></div></div><div class="feature"><div class="feature-copy"><small>WELCOME TO</small><h2>VSM SHOWS</h2><p>Your cinema. Your choice. Your moment.</p></div></div></section>
+<section class="section" id="movies"><div class="section-head"><div><div class="eyebrow">Now showing • Movie collection</div><h2>Explore Movies</h2><p>Find a title and open its details.</p></div></div>
+<div class="tools"><input id="search" type="search" placeholder="Search movies..." aria-label="Search movies"><select id="genre" aria-label="Filter by genre"><option value="all">All genres</option><option>Action</option><option>Drama</option><option>Romance</option><option>Family</option><option>Thriller</option></select></div>
+<div class="grid" id="movieGrid">
+<article class="movie" data-title="Sigma" data-genre="Action"><div class="poster" style="--poster:linear-gradient(145deg,#14243b,#b77924 58%,#321b22)"><div class="poster-art">Σ</div><div class="poster-label">SIGMA</div></div><div class="movie-info"><h3>Sigma</h3><div class="meta">Action • Adventure</div><button onclick="showDetails('Sigma','Action / Adventure','A high-energy treasure-hunt adventure.')">View Details</button></div></article>
+<article class="movie" data-title="Salaar" data-genre="Action"><div class="poster" style="--poster:linear-gradient(145deg,#171a22,#6c3430 58%,#c18b43)"><div class="poster-art">S</div><div class="poster-label">SALAAR</div></div><div class="movie-info"><h3>Salaar</h3><div class="meta">Action • Thriller</div><button onclick="showDetails('Salaar','Action / Thriller','An intense action drama.')">View Details</button></div></article>
+<article class="movie" data-title="Our Fault" data-genre="Romance"><div class="poster" style="--poster:linear-gradient(145deg,#4b1729,#bd6471 55%,#171c35)"><div class="poster-art">♥</div><div class="poster-label">OUR FAULT</div></div><div class="movie-info"><h3>Our Fault</h3><div class="meta">Romance • Drama</div><button onclick="showDetails('Our Fault','Romance / Drama','A relationship drama.')">View Details</button></div></article>
+<article class="movie" data-title="Akka" data-genre="Drama"><div class="poster" style="--poster:linear-gradient(145deg,#152d38,#397c70 55%,#17202a)"><div class="poster-art">AK</div><div class="poster-label">AKKA</div></div><div class="movie-info"><h3>Akka</h3><div class="meta">Drama</div><button onclick="showDetails('Akka','Drama','Movie listing added to the VSM SHOWS collection.')">View Details</button></div></article>
+<article class="movie" data-title="Ranabaali" data-genre="Action"><div class="poster" style="--poster:linear-gradient(145deg,#36201a,#a34e2c 55%,#d3a35c)"><div class="poster-art">R</div><div class="poster-label">RANABAALI</div></div><div class="movie-info"><h3>Ranabaali</h3><div class="meta">Action • Period Drama</div><button onclick="showDetails('Ranabaali','Action / Period Drama','A historical action drama.')">View Details</button></div></article>
+<article class="movie" data-title="Thellakaagitham" data-genre="Thriller"><div class="poster" style="--poster:linear-gradient(145deg,#17232c,#647b84 55%,#d5c7a5)"><div class="poster-art">T</div><div class="poster-label">THELLAKAAGITHAM</div></div><div class="movie-info"><h3>Thellakaagitham</h3><div class="meta">Thriller</div><button onclick="showDetails('Thellakaagitham','Thriller','Movie listing added to the VSM SHOWS collection.')">View Details</button></div></article>
+<article class="movie" data-title="Aadarsha Kutumbam" data-genre="Family"><div class="poster" style="--poster:linear-gradient(145deg,#243b37,#c18b48 58%,#55352d)"><div class="poster-art">AK47</div><div class="poster-label">AADARSHA<br>KUTUMBAM</div></div><div class="movie-info"><h3>Aadarsha Kutumbam</h3><div class="meta">Family • Drama</div><button onclick="showDetails('Aadarsha Kutumbam','Family / Drama','A family-focused Telugu film listing.')">View Details</button></div></article>
+<div class="empty" id="empty">No movies match your search.</div>
+</div>
+<p class="note">Poster-style artwork is used as a visual placeholder in this starter version. Replace it with licensed or official movie poster image files before publishing a public commercial booking service. Movie availability, showtimes and ticket checkout are demo-only and are not connected to a cinema or payment provider.</p>
+</section>
+<section class="section" id="about" style="padding-top:0"><div class="eyebrow">About the project</div><h2>Entertainment made simple.</h2><p style="color:#aab4c4;line-height:1.8;max-width:760px">VSM SHOWS is a student web project concept for browsing a movie collection and discovering titles in one place. This starter website is responsive and includes movie search, genre filtering and movie detail pop-ups.</p></section>
+</main>
+<footer>© 2026 VSM SHOWS • Made for movie lovers</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><button class="close" onclick="closeDetails()" aria-label="Close">×</button><div class="eyebrow">Movie details</div><h3 id="modalTitle"></h3><strong id="modalGenre" style="color:var(--accent)"></strong><p id="modalDesc"></p><p style="font-size:12px">Showtime booking will be enabled when a cinema/showtime service is connected.</p></div></div>
+<script>
+const search=document.getElementById('search'),genre=document.getElementById('genre');
+function filterMovies(){const q=search.value.toLowerCase().trim(),g=genre.value;let count=0;document.querySelectorAll('.movie').forEach(card=>{const ok=card.dataset.title.toLowerCase().includes(q)&&(g==='all'||card.dataset.genre===g);card.style.display=ok?'flex':'none';if(ok)count++});document.getElementById('empty').style.display=count?'none':'block'}
+search.addEventListener('input',filterMovies);genre.addEventListener('change',filterMovies);
+function showDetails(name,type,desc){document.getElementById('modalTitle').textContent=name;document.getElementById('modalGenre').textContent=type;document.getElementById('modalDesc').textContent=desc;document.getElementById('modal').classList.add('show')}
+function closeDetails(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeDetails()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetails()});
+</script>
+</body></html>
